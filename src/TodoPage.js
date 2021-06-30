@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { addTodo, getTodos } from './fetch-utils.js'
+import { addTodo, complete, getTodos } from './fetch-utils.js'
 export default class TodoPage extends Component {
     state = {
         todos: [],
@@ -37,6 +37,23 @@ export default class TodoPage extends Component {
                     </label>
                     <button>Add To-do</button>
                 </form>
+                <div>
+                    {this.state.todos.map(todo =>
+                        <p className={
+                            this.complete
+                            ? 'complete'
+                            : 'not complete'
+                            }
+                            key={`${todo.todo}${todo.id}`}
+                            onClick={async () => {
+                                await complete(todo.id, this.props.token)
+                                await this.fetchTodos()
+                            }}
+                            >
+                            {todo.todo}
+                        </p>)
+                    }
+                </div>
             </div>
         )
     }
