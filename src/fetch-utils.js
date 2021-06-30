@@ -1,6 +1,6 @@
 import request from 'superagent';
 
-const URL = 'https://arcane-journey-95948.herokuapp.com';
+const URL = 'https://thawing-fjord-09543.herokuapp.com';
 
 export async function signup(email, password) {
     const data = await request

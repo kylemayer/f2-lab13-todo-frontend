@@ -13,7 +13,6 @@ import SignUp from './SignUp.js';
 import TodoPage from './TodoPage.js';
 
 const TOKEN_KEY = 'TOKEN';
-
 export default class App extends Component {
 
   state = {
@@ -36,10 +35,10 @@ render() {
         <div>
           <div>
             <Link to="/">Home</Link>
-            <Link to="/">Login</Link>
-            <Link to="/">Signup</Link>
-            <Link to="/">To-Dos</Link>
-            <button>Logout!</button>
+            <Link to="/login">Login</Link>
+            <Link to="/signup">Signup</Link>
+            <Link to="/todospage">To-Dos</Link>
+            <button onClick={this.logout}>Logout!</button>
           </div>
           <Switch>
             <Route
