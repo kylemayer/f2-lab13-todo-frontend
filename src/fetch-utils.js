@@ -31,7 +31,7 @@ export async function getTodos(token) {
     return data.body;
 }
 
-export async function getTodo(todo, token) {
+export async function addTodo(todo, token) {
     const data = await request
         .post(`${URL}/api/todos`)
         .send({
