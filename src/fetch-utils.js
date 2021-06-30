@@ -2,9 +2,14 @@ import request from 'superagent';
 
 const URL = 'https://arcane-journey-95948.herokuapp.com';
 
-const async function signup() {
+const async function signup(email, password) {
     const data = await request
-
+        .post(`${URL}/auth/signup`)
+        .send({
+            email: email,
+            password: password
+        })
+    return data.body.token;
 }
 
 
