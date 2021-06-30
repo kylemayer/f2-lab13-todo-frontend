@@ -4,6 +4,7 @@ import {
   Switch,
   Route,
   Link,
+  Redirect,
 } from "react-router-dom";
 import './App.css';
 import Home from './Home.js';
@@ -42,28 +43,30 @@ render() {
           </div>
           <Switch>
             <Route
+              path="/"
               exact
-              render={(routerProps) => <Home />}
-
+              render={(routerProps) => <Home {...routerProps} />}
             />
             <Route
+              path="/signup"
               exact
-              render={(routerProps) => <SignUp />}
-
+              render={(routerProps) => <SignUp login={this.login} {...routerProps} />}
             />
             <Route
+              path="/login"
               exact
-              render={(routerProps) => <Login />}
-
+              render={(routerProps) => <Login login={this.login} {...routerProps} />}
             />
             <Route
+              path="/todos"
               exact
-              render={(routerProps) => <TodoPage />}
-
+              render={(routerProps) =>
+              this.state.token
+              ? <TodoPage {...routerProps} token={this.state.token} />
+              : <Redirect to="/" />
+            }
             />
-
           </Switch>
-
         </div>
       </Router>
     );
